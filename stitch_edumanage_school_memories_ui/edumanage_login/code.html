@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EduManage - Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&amp;family=Lexend:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-fixed-variant": "#594400",
+                      "tertiary-container": "#c9a74d",
+                      "on-primary-container": "#e0d2ff",
+                      "on-surface": "#1d1b20",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "surface-tint": "#6750a4",
+                      "primary-container": "#6750a4",
+                      "surface-container-high": "#ece6ee",
+                      "surface-bright": "#fdf7ff",
+                      "on-primary-fixed": "#22005d",
+                      "primary-fixed-dim": "#cfbcff",
+                      "on-primary-fixed-variant": "#4f378a",
+                      "inverse-on-surface": "#f5eff7",
+                      "on-tertiary-fixed": "#241a00",
+                      "surface-dim": "#ded8e0",
+                      "on-secondary-container": "#645a7d",
+                      "on-background": "#1d1b20",
+                      "surface": "#fdf7ff",
+                      "inverse-surface": "#322f35",
+                      "inverse-primary": "#cfbcff",
+                      "secondary-fixed": "#e9ddff",
+                      "on-surface-variant": "#494551",
+                      "secondary-fixed-dim": "#cdc0e9",
+                      "outline-variant": "#cbc4d2",
+                      "error": "#ba1a1a",
+                      "surface-variant": "#e6e0e9",
+                      "surface-container-highest": "#e6e0e9",
+                      "surface-container-low": "#f8f2fa",
+                      "tertiary-fixed-dim": "#e7c365",
+                      "primary-fixed": "#e9ddff",
+                      "on-tertiary-container": "#503d00",
+                      "on-primary": "#ffffff",
+                      "primary": "#4f378a",
+                      "tertiary": "#765b00",
+                      "on-error-container": "#93000a",
+                      "tertiary-fixed": "#ffdf93",
+                      "secondary-container": "#e1d4fd",
+                      "surface-container": "#f2ecf4",
+                      "on-secondary-fixed": "#1f1635",
+                      "error-container": "#ffdad6",
+                      "background": "#fdf7ff",
+                      "secondary": "#63597c",
+                      "on-error": "#ffffff",
+                      "outline": "#7a7582",
+                      "on-secondary-fixed-variant": "#4b4263",
+                      "on-tertiary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "card-gap": "24px",
+                      "unit": "8px",
+                      "container-padding": "32px"
+              },
+              "fontFamily": {
+                      "h3": [
+                              "Fredoka One"
+                      ],
+                      "label-caps": [
+                              "Lexend"
+                      ],
+                      "h2": [
+                              "Fredoka One"
+                      ],
+                      "body-lg": [
+                              "Lexend"
+                      ],
+                      "body-md": [
+                              "Lexend"
+                      ],
+                      "body-sm": [
+                              "Lexend"
+                      ],
+                      "h1": [
+                              "Fredoka One"
+                      ]
+              },
+              "fontSize": {
+                      "h3": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "h2": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "h1": [
+                              "40px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .crayon-shadow {
+            box-shadow: 4px 4px 0px 0px rgba(73, 69, 81, 0.2);
+        }
+        .crayon-shadow:active {
+            box-shadow: 2px 2px 0px 0px rgba(73, 69, 81, 0.2);
+            transform: translate(2px, 2px);
+        }
+        .wavy-line {
+            text-decoration-line: underline;
+            text-decoration-style: wavy;
+            text-decoration-color: #c9a74d; /* tertiary-container */
+        }
+        .rainbow-band {
+            background: linear-gradient(90deg, #ff9999 0%, #ffcc99 20%, #ffff99 40%, #99ff99 60%, #99ccff 80%, #cc99ff 100%);
+        }
+        .notebook-texture {
+            background-color: #fdf6e3;
+            background-image: repeating-linear-gradient(45deg, rgba(0,0,0,0.03) 0, rgba(0,0,0,0.03) 1px, transparent 1px, transparent 10px);
+        }
+    </style>
+</head>
+<body class="notebook-texture min-h-screen flex items-center justify-center relative overflow-hidden font-body-md text-on-surface">
+<!-- Decorative SVGs (Doodles) -->
+<div class="absolute inset-0 pointer-events-none z-0 opacity-15">
+<!-- Top Left - Pencil -->
+<svg class="absolute top-10 left-10 w-24 h-24 text-secondary rotate-[-15deg]" fill="currentColor" viewbox="0 0 24 24">
+<path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"></path>
+</svg>
+<!-- Top Right - Star -->
+<svg class="absolute top-20 right-20 w-16 h-16 text-tertiary-container rotate-[10deg]" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+</svg>
+<!-- Bottom Left - Apple -->
+<svg class="absolute bottom-20 left-20 w-20 h-20 text-error rotate-[5deg]" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 21.6l-1.6-1.5C5.8 16 2 12.3 2 7.7 2 4.2 4.7 1.5 8 1.5c1.8 0 3.6.8 4.7 2.2C13.8 2.3 15.6 1.5 17.4 1.5c3.3 0 6 2.7 6 6.2 0 4.6-3.8 8.3-8.4 12.4L12 21.6z"></path>
+</svg>
+<!-- Bottom Right - Paper Plane -->
+<svg class="absolute bottom-10 right-10 w-28 h-28 text-primary rotate-[-20deg]" fill="currentColor" viewbox="0 0 24 24">
+<path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+</svg>
+</div>
+<!-- Login Card -->
+<div class="relative z-10 w-full max-w-[480px] bg-surface-container-lowest rounded-[20px] crayon-shadow mx-gutter mt-16 mb-8 border-2 border-outline-variant">
+<!-- Rainbow Band -->
+<div class="h-2 w-full rounded-t-[18px] rainbow-band absolute top-0 left-0"></div>
+<!-- Floating Header Logo -->
+<div class="absolute -top-12 left-1/2 transform -translate-x-1/2">
+<div class="w-24 h-24 bg-[#2d4a1e] rounded-full border-4 border-surface-container-lowest flex items-center justify-center crayon-shadow relative overflow-hidden">
+<!-- Chalk dust texture overlay -->
+<div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPjxyZWN0IHdpZHRoPSI0IiBoZWlnaHQ9IjQiIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==')] opacity-50"></div>
+<span class="material-symbols-outlined text-on-primary text-5xl relative z-10" style="font-variation-settings: 'FILL' 1;">
+                    school
+                </span>
+</div>
+</div>
+<div class="pt-16 pb-8 px-8 flex flex-col items-center">
+<!-- Header Text -->
+<h1 class="font-h1 text-h1 text-[#2d4a1e] mb-2 text-center mt-2">EduManage</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 text-center">School Management System</p>
+<!-- Wavy Divider -->
+<div class="w-24 h-1 border-b-4 border-tertiary-container border-dashed mb-8"></div>
+<!-- Form -->
+<form class="w-full flex flex-col gap-unit">
+<!-- Email Field -->
+<div class="mb-4">
+<label class="font-label-caps text-label-caps text-on-surface-variant block mb-2 uppercase ml-1" for="email">Username / Email</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline">
+                                edit
+                            </span>
+</div>
+<input class="w-full bg-surface text-on-surface border-2 border-outline-variant rounded-xl pl-10 pr-4 py-3 font-body-md text-body-md focus:ring-2 focus:ring-tertiary-container focus:border-tertiary-container outline-none transition-all placeholder:text-outline/70" id="email" placeholder="teacher@school.edu" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="mb-6">
+<label class="font-label-caps text-label-caps text-on-surface-variant block mb-2 uppercase ml-1" for="password">Password</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline">
+                                lock
+                            </span>
+</div>
+<input class="w-full bg-surface text-on-surface border-2 border-outline-variant rounded-xl pl-10 pr-4 py-3 font-body-md text-body-md focus:ring-2 focus:ring-tertiary-container focus:border-tertiary-container outline-none transition-all placeholder:text-outline/70" id="password" placeholder="••••••••" type="password"/>
+</div>
+<div class="flex justify-end mt-2">
+<a class="font-body-sm text-body-sm text-primary hover:text-primary-fixed-variant underline decoration-2 decoration-primary/30 underline-offset-2" href="#">Forgot Password?</a>
+</div>
+</div>
+<!-- Submit Button -->
+<button class="w-full bg-[#2d4a1e] text-on-primary font-h3 text-h3 py-4 rounded-xl crayon-shadow border-b-4 border-tertiary-container hover:bg-[#1e3314] transition-colors flex justify-center items-center gap-2 mt-2" type="submit">
+                    Log In
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">
+                        arrow_forward
+                    </span>
+</button>
+</form>
+</div>
+<!-- Footer -->
+<div class="bg-surface-container-low rounded-b-[18px] p-4 flex flex-col items-center justify-center border-t border-outline-variant/30 gap-3">
+<p class="font-body-sm text-body-sm text-on-surface-variant text-center">
+                Access managed by your institution operator
+            </p>
+<!-- Crayon Dots -->
+<div class="flex gap-2">
+<div class="w-3 h-3 rounded-full bg-[#ff9999]"></div>
+<div class="w-3 h-3 rounded-full bg-[#ffcc99]"></div>
+<div class="w-3 h-3 rounded-full bg-[#ffff99]"></div>
+<div class="w-3 h-3 rounded-full bg-[#99ff99]"></div>
+<div class="w-3 h-3 rounded-full bg-[#99ccff]"></div>
+</div>
+</div>
+</div>
+</body></html>

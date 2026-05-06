@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EduManage - Message Compose</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&amp;family=Lexend:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-tertiary-fixed-variant": "#594400",
+                        "tertiary-container": "#c9a74d",
+                        "on-primary-container": "#e0d2ff",
+                        "on-surface": "#1d1b20",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#6750a4",
+                        "primary-container": "#6750a4",
+                        "surface-container-high": "#ece6ee",
+                        "surface-bright": "#fdf7ff",
+                        "on-primary-fixed": "#22005d",
+                        "primary-fixed-dim": "#cfbcff",
+                        "on-primary-fixed-variant": "#4f378a",
+                        "inverse-on-surface": "#f5eff7",
+                        "on-tertiary-fixed": "#241a00",
+                        "surface-dim": "#ded8e0",
+                        "on-secondary-container": "#645a7d",
+                        "on-background": "#1d1b20",
+                        "surface": "#fdf7ff",
+                        "inverse-surface": "#322f35",
+                        "inverse-primary": "#cfbcff",
+                        "secondary-fixed": "#e9ddff",
+                        "on-surface-variant": "#494551",
+                        "secondary-fixed-dim": "#cdc0e9",
+                        "outline-variant": "#cbc4d2",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#e6e0e9",
+                        "surface-container-highest": "#e6e0e9",
+                        "surface-container-low": "#f8f2fa",
+                        "tertiary-fixed-dim": "#e7c365",
+                        "primary-fixed": "#e9ddff",
+                        "on-tertiary-container": "#503d00",
+                        "on-primary": "#ffffff",
+                        "primary": "#4f378a",
+                        "tertiary": "#765b00",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#ffdf93",
+                        "secondary-container": "#e1d4fd",
+                        "surface-container": "#f2ecf4",
+                        "on-secondary-fixed": "#1f1635",
+                        "error-container": "#ffdad6",
+                        "background": "#fdf7ff",
+                        "secondary": "#63597c",
+                        "on-error": "#ffffff",
+                        "outline": "#7a7582",
+                        "on-secondary-fixed-variant": "#4b4263",
+                        "on-tertiary": "#ffffff"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "gutter": "24px",
+                        "card-gap": "24px",
+                        "unit": "8px",
+                        "container-padding": "32px"
+                    },
+                    fontFamily: {
+                        "h3": ["Fredoka One"],
+                        "label-caps": ["Lexend"],
+                        "h2": ["Fredoka One"],
+                        "body-lg": ["Lexend"],
+                        "body-md": ["Lexend"],
+                        "body-sm": ["Lexend"],
+                        "h1": ["Fredoka One"]
+                    },
+                    fontSize: {
+                        "h3": ["24px", { "lineHeight": "1.3", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "h2": ["32px", { "lineHeight": "1.2", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "h1": ["40px", { "lineHeight": "1.2", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Notebook Paper Line Texture */
+        .notebook-lines {
+            background-image: repeating-linear-gradient(
+                transparent,
+                transparent 31px,
+                #cbc4d2 31px,
+                #cbc4d2 32px
+            );
+            background-attachment: local;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex relative overflow-x-hidden">
+<!-- Pattern Overlay for Paper Grain (Subtle) -->
+<div class="fixed inset-0 pointer-events-none opacity-[0.03] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPjxyZWN0IHdpZHRoPSI0IiBoZWlnaHQ9IjQiIGZpbGw9IiNmZmYiLz48cmVjdCB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSIjMDAwIi8+PC9zdmc+')] z-0"></div>
+<!-- Shell: SideNavBar -->
+<nav class="fixed left-0 h-full w-[260px] border-r-4 border-[#1e3314] shadow-[4px_0_0_0_rgba(0,0,0,0.2)] bg-[#2d4a1e] dark:bg-emerald-950 flex flex-col py-8 z-50">
+<!-- Brand -->
+<div class="px-8 mb-10 flex flex-col items-start">
+<span class="material-symbols-outlined text-white text-4xl mb-2">school</span>
+<h1 class="font-['Fredoka_One'] text-white text-3xl italic tracking-wide">EduManage</h1>
+<p class="text-emerald-200/80 font-body-sm text-body-sm mt-1">Digital Scrapbook</p>
+</div>
+<!-- Navigation Links -->
+<ul class="flex flex-col gap-2 flex-1 font-['Fredoka_One'] text-lg tracking-wide">
+<li>
+<a class="flex items-center gap-4 text-emerald-100/80 hover:text-white px-8 py-3 hover:bg-white/10 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                    Dashboard
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-4 text-emerald-100/80 hover:text-white px-8 py-3 hover:bg-white/10 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">school</span>
+                    Classes
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-4 text-emerald-100/80 hover:text-white px-8 py-3 hover:bg-white/10 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">grade</span>
+                    Marks
+                </a>
+</li>
+<!-- Active Tab: Messages -->
+<li class="relative">
+<a class="flex items-center gap-4 bg-white/15 text-white font-bold rounded-l-full ml-4 pl-4 py-3 border-y-2 border-l-2 border-white/20 translate-x-1" href="#">
+<span class="material-symbols-outlined">mail</span>
+                    Messages
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-4 text-emerald-100/80 hover:text-white px-8 py-3 hover:bg-white/10 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">directions_bus</span>
+                    Buses
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-4 text-emerald-100/80 hover:text-white px-8 py-3 hover:bg-white/10 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+                    Settings
+                </a>
+</li>
+</ul>
+<!-- Footer -->
+<div class="mt-auto font-['Fredoka_One'] text-lg tracking-wide">
+<a class="flex items-center gap-4 text-emerald-100/80 hover:text-white px-8 py-3 hover:bg-white/10 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+                Profile
+            </a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 ml-[260px] flex flex-col min-h-screen z-10 relative">
+<!-- Shell: TopAppBar -->
+<header class="w-full h-20 sticky top-0 z-40 bg-[#fdf6e3] dark:bg-stone-900 border-b-2 border-stone-200 dark:border-stone-800 shadow-[0_4px_0_0_rgba(0,0,0,0.05)] flex items-center justify-between px-8">
+<div class="flex items-center gap-4">
+<div class="text-stone-500 dark:text-stone-400 font-['Nunito'] font-bold text-xl">Compose</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-stone-400">search</span>
+<input class="pl-10 pr-4 py-2 rounded-full border-2 border-stone-200 bg-white/50 focus:ring-2 focus:ring-yellow-400 focus:outline-none transition-all font-body-sm text-body-sm w-64 text-stone-800" placeholder="Search..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 rounded-full transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 rounded-full transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-tertiary-container border-2 border-stone-200 flex items-center justify-center ml-2 overflow-hidden cursor-pointer shadow-sm">
+<span class="material-symbols-outlined text-on-tertiary-container">person</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Page Canvas -->
+<div class="p-container-padding max-w-6xl mx-auto w-full flex flex-col gap-card-gap">
+<!-- Breadcrumbs / Context -->
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm">
+<a class="hover:text-primary transition-colors flex items-center gap-1" href="#"><span class="material-symbols-outlined text-sm">arrow_back</span> Back to Classes</a>
+<span class="text-outline-variant">/</span>
+<span>Class 1A</span>
+</div>
+<!-- Bulk Message Card -->
+<section class="bg-surface-container-lowest border-2 border-outline-variant rounded-xl border-l-[12px] border-l-primary p-8 shadow-[4px_4px_0px_#cbc4d2] relative">
+<!-- Doodle Decor -->
+<span class="material-symbols-outlined absolute top-4 right-6 text-outline-variant opacity-20 text-5xl rotate-12">campaign</span>
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-h2 text-h2 text-on-surface flex items-center gap-3">
+<span class="text-4xl">📢</span> Message All Parents in Class 1A
+                    </h2>
+<div class="flex items-center gap-3">
+<span class="font-label-caps text-label-caps px-3 py-1 bg-surface-variant text-on-surface-variant rounded-full border border-outline-variant">Step 2 of 3</span>
+</div>
+</div>
+<!-- Compose Area -->
+<div class="bg-surface-container border-2 border-outline-variant rounded-lg p-6 relative shadow-inner">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-h3 text-h3 text-on-surface">Message All Parents</h3>
+<!-- Washi Tape Tag -->
+<div class="bg-tertiary text-on-tertiary font-label-caps text-label-caps px-4 py-1.5 transform rotate-2 shadow-[2px_2px_0px_#594400] border border-dashed border-white/30 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">translate</span>
+                            Sending in: Telugu
+                        </div>
+</div>
+<!-- Notebook Styled Textarea -->
+<div class="bg-surface-bright border-2 border-outline rounded-md p-1 relative shadow-[2px_2px_0px_var(--tw-colors-outline-variant)] focus-within:ring-2 focus-within:ring-tertiary-fixed focus-within:border-tertiary transition-all">
+<textarea class="w-full h-48 bg-transparent border-none resize-none p-4 notebook-lines font-body-lg text-body-lg text-on-surface focus:ring-0" placeholder="Dear Parents, ...">Dear Parents of Class 1A,
+
+Just a quick reminder that tomorrow is our annual 'Dress Like Your Favorite Book Character' day! We are so excited to see everyone's creative outfits.
+
+Please remember to pack a regular change of clothes just in case.
+
+Warmly,
+Mr. Davis</textarea>
+</div>
+<!-- AI Assistant Info Card -->
+<div class="mt-6 bg-secondary-fixed text-on-secondary-fixed border-2 border-outline-variant rounded-lg p-4 flex items-start gap-4 shadow-[2px_2px_0px_#cbc4d2]">
+<div class="w-10 h-10 rounded-full bg-secondary text-on-secondary flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined">auto_awesome</span>
+</div>
+<div>
+<h4 class="font-body-lg text-body-lg font-bold mb-1">Translation &amp; Tone Check Active</h4>
+<p class="font-body-md text-body-md text-on-secondary-fixed-variant">
+                                Your message will be automatically translated into the preferred language of each parent (e.g., Telugu, Hindi) and checked to ensure a warm, encouraging tone.
+                            </p>
+</div>
+</div>
+<!-- Actions -->
+<div class="mt-8 flex justify-end gap-4">
+<button class="px-6 py-3 font-label-caps text-label-caps text-on-surface bg-surface border-2 border-outline-variant rounded-md shadow-[2px_2px_0px_#cbc4d2] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all flex items-center gap-2">
+                            Save Draft
+                        </button>
+<button class="px-6 py-3 font-label-caps text-label-caps text-on-primary bg-primary border-2 border-on-primary-fixed rounded-md shadow-[3px_3px_0px_#22005d] hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">send</span>
+                            Prepare Individual Messages
+                        </button>
+</div>
+</div>
+</section>
+<!-- Individual Messages Table Section -->
+<section class="mt-4">
+<h3 class="font-h3 text-h3 text-on-surface mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">group</span>
+                    Individual Messages Preview
+                </h3>
+<div class="w-full">
+<table class="w-full border-separate border-spacing-y-4">
+<thead>
+<tr class="text-left font-label-caps text-label-caps text-on-surface-variant">
+<th class="pb-2 px-6">Student</th>
+<th class="pb-2 px-6">Parent / Language</th>
+<th class="pb-2 px-6">Preview snippet</th>
+<th class="pb-2 px-6 text-right">Action</th>
+</tr>
+</thead>
+<tbody>
+<!-- Row 1 -->
+<tr class="bg-surface-container-lowest shadow-[2px_2px_0px_#cbc4d2] rounded-lg border border-outline-variant group hover:-translate-y-1 transition-transform">
+<td class="p-4 px-6 rounded-l-lg border-y border-l border-outline-variant group-hover:border-primary transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center font-bold text-primary">AK</div>
+<span class="font-body-lg text-body-lg font-bold text-on-surface">Arjun Kumar</span>
+</div>
+</td>
+<td class="p-4 px-6 border-y border-outline-variant group-hover:border-primary transition-colors">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface">Priya Kumar</span>
+<span class="font-body-sm text-body-sm text-secondary bg-secondary-fixed/50 px-2 py-0.5 rounded-sm inline-flex w-max mt-1 border border-outline-variant/30">Telugu</span>
+</div>
+</td>
+<td class="p-4 px-6 border-y border-outline-variant group-hover:border-primary transition-colors">
+<p class="font-body-md text-body-md text-on-surface-variant truncate max-w-xs italic">
+                                        "క్లాస్ 1A తల్లిదండ్రులందరికీ, రేపు మా వార్షిక..."
+                                    </p>
+</td>
+<td class="p-4 px-6 rounded-r-lg border-y border-r border-outline-variant text-right group-hover:border-primary transition-colors">
+<button class="px-4 py-2 font-label-caps text-label-caps text-on-secondary-container bg-secondary-container border border-outline-variant rounded-md shadow-[2px_2px_0px_#cbc4d2] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all inline-flex items-center gap-2">
+                                        📱 Send
+                                    </button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="bg-surface-container-lowest shadow-[2px_2px_0px_#cbc4d2] rounded-lg border border-outline-variant group hover:-translate-y-1 transition-transform">
+<td class="p-4 px-6 rounded-l-lg border-y border-l border-outline-variant group-hover:border-primary transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center font-bold text-primary">SM</div>
+<span class="font-body-lg text-body-lg font-bold text-on-surface">Sarah Miller</span>
+</div>
+</td>
+<td class="p-4 px-6 border-y border-outline-variant group-hover:border-primary transition-colors">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface">David Miller</span>
+<span class="font-body-sm text-body-sm text-secondary bg-secondary-fixed/50 px-2 py-0.5 rounded-sm inline-flex w-max mt-1 border border-outline-variant/30">English</span>
+</div>
+</td>
+<td class="p-4 px-6 border-y border-outline-variant group-hover:border-primary transition-colors">
+<p class="font-body-md text-body-md text-on-surface-variant truncate max-w-xs italic">
+                                        "Dear Parents of Class 1A, Just a quick reminder..."
+                                    </p>
+</td>
+<td class="p-4 px-6 rounded-r-lg border-y border-r border-outline-variant text-right group-hover:border-primary transition-colors">
+<button class="px-4 py-2 font-label-caps text-label-caps text-on-secondary-container bg-secondary-container border border-outline-variant rounded-md shadow-[2px_2px_0px_#cbc4d2] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all inline-flex items-center gap-2">
+                                        📱 Send
+                                    </button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="bg-surface-container-lowest shadow-[2px_2px_0px_#cbc4d2] rounded-lg border border-outline-variant group hover:-translate-y-1 transition-transform">
+<td class="p-4 px-6 rounded-l-lg border-y border-l border-outline-variant group-hover:border-primary transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center font-bold text-primary">RP</div>
+<span class="font-body-lg text-body-lg font-bold text-on-surface">Rohan Patel</span>
+</div>
+</td>
+<td class="p-4 px-6 border-y border-outline-variant group-hover:border-primary transition-colors">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface">Aarti Patel</span>
+<span class="font-body-sm text-body-sm text-secondary bg-secondary-fixed/50 px-2 py-0.5 rounded-sm inline-flex w-max mt-1 border border-outline-variant/30">Hindi</span>
+</div>
+</td>
+<td class="p-4 px-6 border-y border-outline-variant group-hover:border-primary transition-colors">
+<p class="font-body-md text-body-md text-on-surface-variant truncate max-w-xs italic">
+                                        "कक्षा 1A के सभी माता-पिता को, कल हमारे वार्षिक..."
+                                    </p>
+</td>
+<td class="p-4 px-6 rounded-r-lg border-y border-r border-outline-variant text-right group-hover:border-primary transition-colors">
+<button class="px-4 py-2 font-label-caps text-label-caps text-on-secondary-container bg-secondary-container border border-outline-variant rounded-md shadow-[2px_2px_0px_#cbc4d2] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all inline-flex items-center gap-2">
+                                        📱 Send
+                                    </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</main>
+</body></html>

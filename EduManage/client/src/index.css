@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Colors */
+  --bg-primary: #fdf6e3;
+  --bg-secondary: #fff9f0;
+  --sidebar-bg: #2d4a1e;
+  --sidebar-accent: #4a7c2f;
+  --accent-yellow: #f5c842;
+  --accent-red: #e84040;
+  --accent-blue: #4a90d9;
+  --accent-green: #5cb85c;
+  --accent-orange: #f0874a;
+  --accent-purple: #9b59b6;
+  --text-primary: #2c1810;
+  --text-secondary: #7a6652;
+  --border-color: #e8d5b0;
+  --card-bg: #ffffff;
+
+  /* Radius */
+  --radius-card: 16px;
+  --radius-btn: 12px;
+  --radius-input: 10px;
+  --radius-badge: 999px;
+
+  /* Shadow */
+  --shadow-card: 0 2px 8px rgba(139,90,43,0.12), 0 8px 24px rgba(139,90,43,0.08);
+}
+
+body {
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  /* Notebook paper lines */
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 27px,
+    rgba(180,160,120,0.15) 28px
+  );
+  background-size: 100% 28px;
+  background-attachment: fixed;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Fredoka One', cursive;
+  font-weight: 400;
+}
+
+/* Sidebar Texture */
+.chalkboard-bg {
+  background-color: var(--sidebar-bg);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04' fill='white'/%3E%3C/svg%3E");
+}
+
+/* Wavy Divider */
+.wavy-underline {
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: var(--accent-yellow);
+  text-underline-offset: 6px;
+  text-decoration-thickness: 3px;
+}
+
+/* Crayon Button Hover */
+.btn-crayon {
+  transition: all 0.2s ease;
+  box-shadow: 2px 2px 0px rgba(139, 90, 43, 0.4);
+}
+.btn-crayon:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px rgba(139, 90, 43, 0.4);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}

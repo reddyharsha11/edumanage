@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EduManage Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&amp;family=Lexend:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#594400",
+                        "tertiary-container": "#c9a74d",
+                        "on-primary-container": "#e0d2ff",
+                        "on-surface": "#1d1b20",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#6750a4",
+                        "primary-container": "#6750a4",
+                        "surface-container-high": "#ece6ee",
+                        "surface-bright": "#fdf7ff",
+                        "on-primary-fixed": "#22005d",
+                        "primary-fixed-dim": "#cfbcff",
+                        "on-primary-fixed-variant": "#4f378a",
+                        "inverse-on-surface": "#f5eff7",
+                        "on-tertiary-fixed": "#241a00",
+                        "surface-dim": "#ded8e0",
+                        "on-secondary-container": "#645a7d",
+                        "on-background": "#1d1b20",
+                        "surface": "#fdf7ff",
+                        "inverse-surface": "#322f35",
+                        "inverse-primary": "#cfbcff",
+                        "secondary-fixed": "#e9ddff",
+                        "on-surface-variant": "#494551",
+                        "secondary-fixed-dim": "#cdc0e9",
+                        "outline-variant": "#cbc4d2",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#e6e0e9",
+                        "surface-container-highest": "#e6e0e9",
+                        "surface-container-low": "#f8f2fa",
+                        "tertiary-fixed-dim": "#e7c365",
+                        "primary-fixed": "#e9ddff",
+                        "on-tertiary-container": "#503d00",
+                        "on-primary": "#ffffff",
+                        "primary": "#4f378a",
+                        "tertiary": "#765b00",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#ffdf93",
+                        "secondary-container": "#e1d4fd",
+                        "surface-container": "#f2ecf4",
+                        "on-secondary-fixed": "#1f1635",
+                        "error-container": "#ffdad6",
+                        "background": "#fdf7ff",
+                        "secondary": "#63597c",
+                        "on-error": "#ffffff",
+                        "outline": "#7a7582",
+                        "on-secondary-fixed-variant": "#4b4263",
+                        "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "card-gap": "24px",
+                        "unit": "8px",
+                        "container-padding": "32px"
+                    },
+                    "fontFamily": {
+                        "h3": ["Fredoka One"],
+                        "label-caps": ["Lexend"],
+                        "h2": ["Fredoka One"],
+                        "body-lg": ["Lexend"],
+                        "body-md": ["Lexend"],
+                        "body-sm": ["Lexend"],
+                        "h1": ["Fredoka One"]
+                    },
+                    "fontSize": {
+                        "h3": ["24px", { "lineHeight": "1.3", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "h2": ["32px", { "lineHeight": "1.2", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "h1": ["40px", { "lineHeight": "1.2", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .paper-texture {
+            background-color: theme('colors.background');
+            background-image: repeating-linear-gradient(transparent, transparent 31px, rgba(0,0,0,0.05) 31px, rgba(0,0,0,0.05) 32px);
+        }
+        .crayon-shadow {
+            box-shadow: 4px 4px 0px 0px theme('colors.outline-variant');
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased flex min-h-screen">
+<!-- Paper Texture Overlay -->
+<div class="fixed inset-0 pointer-events-none paper-texture z-0"></div>
+<!-- SideNavBar (Generated from JSON) -->
+<nav class="fixed left-0 h-full w-[260px] border-r-4 border-[#1e3314] bg-[#2d4a1e] dark:bg-emerald-950 flex flex-col py-8 shadow-[4px_0_0_0_rgba(0,0,0,0.2)] z-50">
+<div class="px-8 mb-10 flex flex-col gap-2">
+<h1 class="font-['Fredoka_One'] text-white text-3xl italic tracking-wide">EduManage</h1>
+<p class="text-white/80 font-body-sm">Digital Scrapbook</p>
+</div>
+<ul class="flex flex-col w-full">
+<!-- Active Tab: Dashboard -->
+<li class="mb-2">
+<a class="flex items-center gap-4 bg-white/15 text-white font-bold rounded-l-full ml-4 pl-4 py-3 border-y-2 border-l-2 border-white/20 translate-x-1 font-['Fredoka_One'] text-lg tracking-wide" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+                    Dashboard
+                </a>
+</li>
+<!-- Inactive Tabs -->
+<li>
+<a class="flex items-center gap-4 text-emerald-100/80 hover:text-white px-8 py-3 hover:bg-white/10 transition-all duration-200 font-['Fredoka_One'] text-lg tracking-wide" href="#">
+<span class="material-symbols-outlined">school</span>
+                    Classes
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-4 text-emerald-100/80 hover:text-white px-8 py-3 hover:bg-white/10 transition-all duration-200 font-['Fredoka_One'] text-lg tracking-wide" href="#">
+<span class="material-symbols-outlined">grade</span>
+                    Marks
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-4 text-emerald-100/80 hover:text-white px-8 py-3 hover:bg-white/10 transition-all duration-200 font-['Fredoka_One'] text-lg tracking-wide" href="#">
+<span class="material-symbols-outlined">mail</span>
+                    Messages
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-4 text-emerald-100/80 hover:text-white px-8 py-3 hover:bg-white/10 transition-all duration-200 font-['Fredoka_One'] text-lg tracking-wide" href="#">
+<span class="material-symbols-outlined">directions_bus</span>
+                    Buses
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-4 text-emerald-100/80 hover:text-white px-8 py-3 hover:bg-white/10 transition-all duration-200 font-['Fredoka_One'] text-lg tracking-wide" href="#">
+<span class="material-symbols-outlined">settings</span>
+                    Settings
+                </a>
+</li>
+</ul>
+<div class="mt-auto w-full px-8 pt-6 border-t-4 border-black/20">
+<a class="flex items-center gap-4 text-emerald-100/80 hover:text-white hover:bg-white/10 transition-all duration-200 py-3 -mx-4 px-4 rounded-lg font-['Fredoka_One'] text-lg tracking-wide" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+                Profile
+            </a>
+</div>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="flex-1 flex flex-col pl-[260px] relative z-10">
+<!-- TopAppBar (Generated from JSON) -->
+<header class="w-full h-20 sticky top-0 z-40 bg-[#fdf6e3] dark:bg-stone-900 border-b-2 border-stone-200 dark:border-stone-800 shadow-[0_4px_0_0_rgba(0,0,0,0.05)] flex items-center justify-between px-8">
+<div class="font-['Fredoka_One'] text-emerald-800 dark:text-emerald-400 text-2xl hidden md:block">
+<!-- Empty spacer to match JSON structure intent if needed, or hide if sidebar handles branding -->
+</div>
+<div class="flex items-center justify-end w-full gap-6">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-stone-500">search</span>
+<input class="pl-10 pr-4 py-2 bg-white border-2 border-stone-200 rounded-full focus:ring-2 focus:ring-yellow-400 focus:outline-none font-['Nunito'] font-bold text-stone-800 w-64 shadow-sm transition-all duration-200" placeholder="Search..." type="text"/>
+</div>
+<button class="text-stone-500 hover:bg-stone-100 p-2 rounded-full transition-all duration-200 focus:ring-2 focus:ring-yellow-400">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-stone-500 hover:bg-stone-100 p-2 rounded-full transition-all duration-200 focus:ring-2 focus:ring-yellow-400">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+<img alt="Teacher Profile" class="w-10 h-10 rounded-full border-2 border-stone-200 object-cover" data-alt="A close-up portrait of a friendly female teacher with glasses, smiling warmly. She is in a brightly lit classroom setting with soft, natural light, fitting a cheerful educational aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYq2SlhMga1EzyZefe1RD0FbF7BurT102aW-d05Lo6OTnLpfDNe0o4xpdFWAqfYyzQlX6ODxOpP5ryK1S6srMubayz6oHiecEG7qWYQXBnWIMw6f09ZQhfwFwTr66QSt8HPUGaX-CMkdnHrXEzzwt--YlGiklpbaFRg80Hi66PL_k6UoNeqLw5thjZ7StsCC7h1870DEmp-L9t8j0KFGgIYYbQGchhoUSZswelXzVWNsALrExxn982XPC9AGERt1NNG0ocYNV0SXgH"/>
+</div>
+</header>
+<!-- Dashboard Canvas -->
+<main class="flex-1 p-container-padding flex flex-col gap-8 max-w-7xl mx-auto w-full">
+<!-- Header Section -->
+<section class="flex flex-col gap-2">
+<h2 class="font-h2 text-on-tertiary-fixed-variant flex items-center gap-3">
+                    Good Morning, Admin! <span class="text-3xl">👋</span>
+</h2>
+<p class="font-body-md text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+                    Thursday, October 24th
+                </p>
+</section>
+<!-- KPI Row -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-card-gap">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-6 border-2 border-outline-variant crayon-shadow border-l-[8px] border-l-primary flex flex-col gap-4 relative overflow-hidden group hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-none transition-all cursor-default">
+<div class="flex justify-between items-start">
+<span class="font-label-caps text-on-surface-variant uppercase text-sm">Total Students</span>
+<div class="p-2 bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined">groups</span>
+</div>
+</div>
+<div class="font-h1 text-on-surface">248</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-6 border-2 border-outline-variant crayon-shadow border-l-[8px] border-l-secondary flex flex-col gap-4 relative overflow-hidden group hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-none transition-all cursor-default">
+<div class="flex justify-between items-start">
+<span class="font-label-caps text-on-surface-variant uppercase text-sm">Present Today</span>
+<div class="p-2 bg-secondary/10 rounded-lg text-secondary">
+<span class="material-symbols-outlined">how_to_reg</span>
+</div>
+</div>
+<div class="font-h1 text-on-surface">201</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-6 border-2 border-outline-variant crayon-shadow border-l-[8px] border-l-tertiary flex flex-col gap-4 relative overflow-hidden group hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-none transition-all cursor-default">
+<div class="flex justify-between items-start">
+<span class="font-label-caps text-on-surface-variant uppercase text-sm">Attendance Rate</span>
+<div class="p-2 bg-tertiary/10 rounded-lg text-tertiary">
+<span class="material-symbols-outlined">pie_chart</span>
+</div>
+</div>
+<div class="font-h1 text-on-surface">81.0<span class="text-2xl text-on-surface-variant">%</span></div>
+</div>
+</section>
+<!-- Table Section -->
+<section class="flex flex-col gap-6 mt-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary-container text-3xl">edit</span>
+<h3 class="font-h3 text-on-surface underline decoration-wavy decoration-tertiary-container decoration-2 underline-offset-8">Class Overview</h3>
+</div>
+<div class="bg-surface-container-lowest rounded-xl border-2 border-outline-variant crayon-shadow overflow-hidden flex flex-col">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-[#2d4a1e] text-white font-h3 text-lg sticky top-0 z-10 border-b-4 border-outline-variant">
+<tr>
+<th class="py-4 px-6 font-normal">Class</th>
+<th class="py-4 px-6 font-normal">Total</th>
+<th class="py-4 px-6 font-normal">Present</th>
+<th class="py-4 px-6 font-normal">Attendance %</th>
+<th class="py-4 px-6 font-normal">Avg Marks %</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-on-surface">
+<tr class="border-b-2 border-outline-variant/30 hover:bg-surface-variant/30 transition-colors">
+<td class="py-4 px-6 font-bold flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-h3 text-sm">1A</div>
+                                        Grade 1
+                                    </td>
+<td class="py-4 px-6">32</td>
+<td class="py-4 px-6">30</td>
+<td class="py-4 px-6">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full font-label-caps text-xs">93.7%</span>
+</td>
+<td class="py-4 px-6">
+<span class="px-3 py-1 bg-tertiary-container text-on-tertiary-container rounded-full font-label-caps text-xs">A- (88%)</span>
+</td>
+</tr>
+<tr class="bg-surface-container-low border-b-2 border-outline-variant/30 hover:bg-surface-variant/30 transition-colors">
+<td class="py-4 px-6 font-bold flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-h3 text-sm">2B</div>
+                                        Grade 2
+                                    </td>
+<td class="py-4 px-6">28</td>
+<td class="py-4 px-6">25</td>
+<td class="py-4 px-6">
+<span class="px-3 py-1 bg-error-container text-on-error-container rounded-full font-label-caps text-xs">89.2%</span>
+</td>
+<td class="py-4 px-6">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full font-label-caps text-xs">B+ (84%)</span>
+</td>
+</tr>
+<tr class="border-b-2 border-outline-variant/30 hover:bg-surface-variant/30 transition-colors">
+<td class="py-4 px-6 font-bold flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center font-h3 text-sm">3C</div>
+                                        Grade 3
+                                    </td>
+<td class="py-4 px-6">35</td>
+<td class="py-4 px-6">34</td>
+<td class="py-4 px-6">
+<span class="px-3 py-1 bg-primary-container text-on-primary-container rounded-full font-label-caps text-xs">97.1%</span>
+</td>
+<td class="py-4 px-6">
+<span class="px-3 py-1 bg-primary-container text-on-primary-container rounded-full font-label-caps text-xs">A (92%)</span>
+</td>
+</tr>
+<tr class="bg-surface-container-low border-b-2 border-outline-variant/30 hover:bg-surface-variant/30 transition-colors">
+<td class="py-4 px-6 font-bold flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-h3 text-sm">4A</div>
+                                        Grade 4
+                                    </td>
+<td class="py-4 px-6">30</td>
+<td class="py-4 px-6">28</td>
+<td class="py-4 px-6">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full font-label-caps text-xs">93.3%</span>
+</td>
+<td class="py-4 px-6">
+<span class="px-3 py-1 bg-tertiary-container text-on-tertiary-container rounded-full font-label-caps text-xs">B (81%)</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</main>
+</div>
+</body></html>

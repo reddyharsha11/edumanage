@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EduManage - Bus Attendance</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&amp;family=Lexend:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-fixed-variant": "#594400",
+                      "tertiary-container": "#c9a74d",
+                      "on-primary-container": "#e0d2ff",
+                      "on-surface": "#1d1b20",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "surface-tint": "#6750a4",
+                      "primary-container": "#6750a4",
+                      "surface-container-high": "#ece6ee",
+                      "surface-bright": "#fdf7ff",
+                      "on-primary-fixed": "#22005d",
+                      "primary-fixed-dim": "#cfbcff",
+                      "on-primary-fixed-variant": "#4f378a",
+                      "inverse-on-surface": "#f5eff7",
+                      "on-tertiary-fixed": "#241a00",
+                      "surface-dim": "#ded8e0",
+                      "on-secondary-container": "#645a7d",
+                      "on-background": "#1d1b20",
+                      "surface": "#fdf7ff",
+                      "inverse-surface": "#322f35",
+                      "inverse-primary": "#cfbcff",
+                      "secondary-fixed": "#e9ddff",
+                      "on-surface-variant": "#494551",
+                      "secondary-fixed-dim": "#cdc0e9",
+                      "outline-variant": "#cbc4d2",
+                      "error": "#ba1a1a",
+                      "surface-variant": "#e6e0e9",
+                      "surface-container-highest": "#e6e0e9",
+                      "surface-container-low": "#f8f2fa",
+                      "tertiary-fixed-dim": "#e7c365",
+                      "primary-fixed": "#e9ddff",
+                      "on-tertiary-container": "#503d00",
+                      "on-primary": "#ffffff",
+                      "primary": "#4f378a",
+                      "tertiary": "#765b00",
+                      "on-error-container": "#93000a",
+                      "tertiary-fixed": "#ffdf93",
+                      "secondary-container": "#e1d4fd",
+                      "surface-container": "#f2ecf4",
+                      "on-secondary-fixed": "#1f1635",
+                      "error-container": "#ffdad6",
+                      "background": "#fdf7ff",
+                      "secondary": "#63597c",
+                      "on-error": "#ffffff",
+                      "outline": "#7a7582",
+                      "on-secondary-fixed-variant": "#4b4263",
+                      "on-tertiary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "card-gap": "24px",
+                      "unit": "8px",
+                      "container-padding": "32px"
+              },
+              "fontFamily": {
+                      "h3": ["Fredoka One"],
+                      "label-caps": ["Lexend"],
+                      "h2": ["Fredoka One"],
+                      "body-lg": ["Lexend"],
+                      "body-md": ["Lexend"],
+                      "body-sm": ["Lexend"],
+                      "h1": ["Fredoka One"]
+              },
+              "fontSize": {
+                      "h3": ["24px", { "lineHeight": "1.3", "fontWeight": "400" }],
+                      "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                      "h2": ["32px", { "lineHeight": "1.2", "fontWeight": "400" }],
+                      "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                      "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                      "body-sm": ["14px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                      "h1": ["40px", { "lineHeight": "1.2", "fontWeight": "400" }]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        /* Paper texture overlay */
+        .paper-texture {
+            background-image: repeating-linear-gradient(45deg, rgba(0,0,0,0.02) 0px, rgba(0,0,0,0.02) 2px, transparent 2px, transparent 8px);
+        }
+        /* Crayon shadow utility */
+        .crayon-shadow {
+            box-shadow: 4px 4px 0px 0px var(--tw-shadow-color, #1d1b20);
+        }
+        /* Chalk dust texture for specific elements */
+        .chalk-texture {
+            background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)" opacity="0.1"/></svg>');
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md overflow-hidden flex h-screen paper-texture">
+<!-- Shared Component: SideNavBar -->
+<nav class="hidden md:flex bg-[#2d4a1e] dark:bg-emerald-950 fixed left-0 h-full w-[260px] border-r-4 border-[#1e3314] shadow-[4px_0_0_0_rgba(0,0,0,0.2)] flex flex-col py-8 z-50">
+<div class="px-8 mb-10">
+<h1 class="font-['Fredoka_One'] text-white text-3xl italic">EduManage</h1>
+<p class="font-['Fredoka_One'] text-lg tracking-wide text-white/80 mt-1">Digital Scrapbook</p>
+</div>
+<ul class="flex-1 flex flex-col gap-2 w-full">
+<li>
+<a class="flex items-center gap-4 text-emerald-100/80 hover:text-white px-8 py-3 hover:bg-white/10 transition-all duration-200 font-['Fredoka_One'] text-lg tracking-wide" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+                    Dashboard
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-4 text-emerald-100/80 hover:text-white px-8 py-3 hover:bg-white/10 transition-all duration-200 font-['Fredoka_One'] text-lg tracking-wide" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">school</span>
+                    Classes
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-4 text-emerald-100/80 hover:text-white px-8 py-3 hover:bg-white/10 transition-all duration-200 font-['Fredoka_One'] text-lg tracking-wide" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">grade</span>
+                    Marks
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-4 text-emerald-100/80 hover:text-white px-8 py-3 hover:bg-white/10 transition-all duration-200 font-['Fredoka_One'] text-lg tracking-wide" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">mail</span>
+                    Messages
+                </a>
+</li>
+<li class="translate-x-1">
+<a class="flex items-center gap-4 bg-white/15 text-white font-bold rounded-l-full ml-4 pl-4 py-3 border-y-2 border-l-2 border-white/20 font-['Fredoka_One'] text-lg tracking-wide" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">directions_bus</span>
+                    Buses
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-4 text-emerald-100/80 hover:text-white px-8 py-3 hover:bg-white/10 transition-all duration-200 font-['Fredoka_One'] text-lg tracking-wide" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+                    Settings
+                </a>
+</li>
+</ul>
+<div class="mt-auto px-4">
+<a class="flex items-center gap-4 text-emerald-100/80 hover:text-white px-4 py-3 hover:bg-white/10 transition-all duration-200 font-['Fredoka_One'] text-lg tracking-wide rounded-full border-t-2 border-black/20" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">account_circle</span>
+                Profile
+            </a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 ml-0 md:ml-[260px] flex flex-col h-full relative">
+<!-- Shared Component: TopAppBar -->
+<header class="bg-[#fdf6e3] dark:bg-stone-900 w-full h-20 sticky top-0 z-40 border-b-2 border-stone-200 dark:border-stone-800 shadow-[0_4px_0_0_rgba(0,0,0,0.05)] flex items-center justify-between px-8">
+<div class="flex items-center gap-4">
+<!-- Mobile Menu Trigger -->
+<button class="md:hidden text-stone-800 dark:text-stone-100 p-2 hover:bg-stone-100 dark:hover:bg-stone-800 rounded-full Focus: ring-2 ring-yellow-400">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<span class="font-['Fredoka_One'] text-emerald-800 dark:text-emerald-400 text-2xl md:hidden">EduManage</span>
+</div>
+<div class="flex items-center gap-4 ml-auto">
+<button class="text-stone-500 dark:text-stone-400 p-2 hover:bg-stone-100 dark:hover:bg-stone-800 rounded-full Focus: ring-2 ring-yellow-400 transition-all duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span>
+</button>
+<button class="text-stone-500 dark:text-stone-400 p-2 hover:bg-stone-100 dark:hover:bg-stone-800 rounded-full Focus: ring-2 ring-yellow-400 transition-all duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">help_outline</span>
+</button>
+<div class="h-10 w-10 rounded-full bg-surface-variant border-2 border-stone-200 overflow-hidden ml-2 cursor-pointer shadow-[2px_2px_0_0_rgba(0,0,0,0.1)]">
+<img alt="Teacher Profile" class="w-full h-full object-cover" data-alt="A portrait photo of a friendly, smiling elementary school teacher standing in a brightly lit classroom. The scene is warm and inviting, capturing a candid, cheerful moment. The lighting is soft and natural, emphasizing a modern, light-mode educational aesthetic with subtle pastel colors in the background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrjlTLbpjZUwrY2pOtAhgR8vIQ3K8tR7PR7Iigs6NS1qDFNJRXzfDqyKEn0o5rbhFE514_kv1Bo8QPrijZZQpb-Dcx7P1HCk9mQnkZhNM8UMtE4felznezlfqXIRCVid5-1Uv6ghPcQZ0yWsiNObpTWmB0QP5DD2MAL7GyjosbSQHxrIBJUd97lLH7ao8l8K-SlA8AsQ63AZ86aikKiiNHmffjS9n9Fr1rvq-GJqIPcKDeXAE7DkxLo7oqrwcqapOIHvWD67ocKZLd"/>
+</div>
+</div>
+</header>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto p-container-padding pb-[140px]">
+<!-- Header Card (Chalkboard styling mapped to inverse-surface for theme compliance, with chalk texture) -->
+<div class="bg-inverse-surface text-inverse-on-surface rounded-xl p-8 mb-card-gap shadow-on-surface crayon-shadow chalk-texture relative border-4 border-inverse-surface">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+<div>
+<h2 class="font-h2 text-h2 mb-2">Route 42 - Morning Run</h2>
+<div class="flex items-center gap-2 text-surface-dim font-body-md text-body-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">calendar_today</span>
+                            October 24, 2023
+                        </div>
+</div>
+<!-- Counters in Washi Tape style pills -->
+<div class="flex gap-4">
+<div class="bg-primary text-on-primary px-4 py-2 rounded-[12px_4px_10px_6px] font-label-caps text-label-caps flex items-center gap-2 shadow-[2px_2px_0_0_#1d1b20]">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            PRESENT: 8
+                        </div>
+<div class="bg-error text-on-error px-4 py-2 rounded-[4px_12px_6px_10px] font-label-caps text-label-caps flex items-center gap-2 shadow-[2px_2px_0_0_#1d1b20]">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">cancel</span>
+                            ABSENT: 4
+                        </div>
+</div>
+</div>
+</div>
+<!-- Student Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-card-gap">
+<!-- Present Student Card -->
+<div class="bg-surface-container-lowest border-2 border-outline-variant border-l-[8px] border-l-primary rounded-lg p-6 crayon-shadow flex items-center justify-between relative overflow-hidden group hover:-translate-y-1 transition-transform">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-outline-variant bg-surface-variant shrink-0">
+<img alt="" class="w-full h-full object-cover" data-alt="A cheerful young elementary school boy wearing a yellow backpack, smiling brightly. Soft, natural morning light highlights his face, conveying an optimistic, back-to-school vibe. The background is a slightly out-of-focus, light-colored classroom setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkCpFwGiD7qXYCgEWz_a-lWJGfvbkhAMQQ3bB2KZUr3KdmpMBfEovuGY5pViFUuJ4qkDeOmOhOGgWNtpYFXnjmHgqv5rrTHBbtNWKhveMIVNhtg2or3SwHPS212As6EUtZj7o03Y17beQJW0HsPnKd4ziKm_w7sihPDC_7cQl46yUPN6wU-eO3y9Mu77u21slRSF9blSuXFwFupEB9KTS8nF1VjXJoBY9SBN8nEXKag8TDdHu_0jkGxsVhyQxCxkPBeOU_8sO77wRp"/>
+</div>
+<div>
+<h3 class="font-h3 text-h3 text-on-surface">Leo Parker</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 0;">location_on</span>
+                                Maple St. &amp; 5th Ave
+                            </p>
+</div>
+</div>
+<!-- Crayon-style Slider (Visual representation) -->
+<button aria-label="Mark student status" class="w-16 h-8 rounded-full bg-primary/20 border-2 border-primary relative flex items-center px-1 cursor-pointer">
+<div class="w-6 h-6 rounded-full bg-primary shadow-[1px_1px_0_0_#1d1b20] ml-auto"></div>
+</button>
+</div>
+<!-- Absent Student Card -->
+<div class="bg-surface-container-lowest border-2 border-outline-variant border-l-[8px] border-l-error rounded-lg p-6 crayon-shadow flex items-center justify-between relative overflow-hidden group hover:-translate-y-1 transition-transform">
+<div class="flex items-center gap-4 opacity-75">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-outline-variant bg-surface-variant shrink-0">
+<img alt="" class="w-full h-full object-cover" data-alt="A portrait of a young school girl looking slightly away from the camera, carrying a small blue tote. The aesthetic is clean, well-lit, and organic, fitting a light-mode educational application. Soft focus emphasizes a serene and calm mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA61t85EqSzBw0EM_aqtvjlm3sHHP8WMSrY24d6ApVCTk9ow4VDK79OZlpwws_lqKcPsAVZCDpAWf7D2a-pR_282KRg-B4KJNOXTI5SlwxSjqwOmLoxv029CDGx44OrI7fpFjxKlU1xXTlu0rMZScYngE92vsLoi36k_RGzp0VMjC0LaJpvIsf7hEw8MtLhPwdSu540SWzOg_aNWo3kfCf-2_XiW5raTY2pcOK4qqSb_s886wyvduspsVIrY-4-DbuUeOM8eS9KQ6dW"/>
+</div>
+<div>
+<h3 class="font-h3 text-h3 text-on-surface">Mia Silva</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 0;">location_on</span>
+                                Elm St. Crosswalk
+                            </p>
+</div>
+</div>
+<button aria-label="Mark student status" class="w-16 h-8 rounded-full bg-error/20 border-2 border-error relative flex items-center px-1 cursor-pointer">
+<div class="w-6 h-6 rounded-full bg-error shadow-[1px_1px_0_0_#1d1b20]"></div>
+</button>
+</div>
+<!-- Present Student Card -->
+<div class="bg-surface-container-lowest border-2 border-outline-variant border-l-[8px] border-l-primary rounded-lg p-6 crayon-shadow flex items-center justify-between relative overflow-hidden group hover:-translate-y-1 transition-transform">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-outline-variant bg-surface-variant shrink-0">
+<div class="w-full h-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-h3 text-h3">
+                                E
+                            </div>
+</div>
+<div>
+<h3 class="font-h3 text-h3 text-on-surface">Ethan Cole</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 0;">location_on</span>
+                                Library Corner
+                            </p>
+</div>
+</div>
+<button aria-label="Mark student status" class="w-16 h-8 rounded-full bg-primary/20 border-2 border-primary relative flex items-center px-1 cursor-pointer">
+<div class="w-6 h-6 rounded-full bg-primary shadow-[1px_1px_0_0_#1d1b20] ml-auto"></div>
+</button>
+</div>
+<!-- Present Student Card -->
+<div class="bg-surface-container-lowest border-2 border-outline-variant border-l-[8px] border-l-primary rounded-lg p-6 crayon-shadow flex items-center justify-between relative overflow-hidden group hover:-translate-y-1 transition-transform">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-outline-variant bg-surface-variant shrink-0">
+<img alt="" class="w-full h-full object-cover" data-alt="A close-up shot of a smiling kindergarten-aged child with a missing front tooth, standing outside in sunny weather. The background features blurred green trees, creating a warm, vibrant, and joyful mood appropriate for an educational scrapbook theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzkSsyWvu7ybLRP2BRKNyaZDzjsFm7-_B8THvR-wfl35bFbZKNoYSHWwBkVNV1w1jXIeACUG940FaulWv1QESC4WCunJK63rb87clgbpC5gIn2ePs1TmHyUy0onZSbJVZJiechRysNi1gH72_5LHxq5peim8kIaUsAXRwFVb8yFlZGtFpJvCNM_xjC9GX8bQ92-YLDZl2bKDH-3o5N6tEYPVaI-anwEMqX6Mh6w0a1DhN5Td_w1bONXIhAeEZRw4coDErxQbrxgYFS"/>
+</div>
+<div>
+<h3 class="font-h3 text-h3 text-on-surface">Chloe Bean</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 0;">location_on</span>
+                                Pine Ridge East
+                            </p>
+</div>
+</div>
+<button aria-label="Mark student status" class="w-16 h-8 rounded-full bg-primary/20 border-2 border-primary relative flex items-center px-1 cursor-pointer">
+<div class="w-6 h-6 rounded-full bg-primary shadow-[1px_1px_0_0_#1d1b20] ml-auto"></div>
+</button>
+</div>
+</div>
+<!-- Decorative Doodle -->
+<div class="mt-12 flex justify-center opacity-15 pointer-events-none">
+<span class="material-symbols-outlined text-[120px] text-on-surface rotate-12" style="font-variation-settings: 'FILL' 0;">school</span>
+</div>
+</div>
+<!-- Sticky Bottom Bar (Task Context) -->
+<div class="absolute bottom-0 left-0 right-0 bg-surface-container-low shadow-[0_-8px_24px_rgba(0,0,0,0.05)] border-t-2 border-outline-variant/30 px-container-padding py-6 flex flex-col sm:flex-row items-center justify-between gap-4 z-40 backdrop-blur-sm">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">fact_check</span>
+</div>
+<div>
+<p class="font-h3 text-h3 text-on-surface">8 of 12 marked</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Attendance incomplete</p>
+</div>
+</div>
+<div class="flex items-center gap-4 w-full sm:w-auto">
+<button class="flex-1 sm:flex-none flex items-center justify-center gap-2 bg-surface-container-lowest text-on-surface font-label-caps text-label-caps border-2 border-outline rounded-lg px-6 py-3 crayon-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">pin_drop</span>
+                    Send Location
+                </button>
+<button class="flex-1 sm:flex-none flex items-center justify-center gap-2 bg-primary text-on-primary font-label-caps text-label-caps border-2 border-primary rounded-lg px-6 py-3 crayon-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                    Submit Attendance
+                </button>
+</div>
+</div>
+</main>
+</body></html>

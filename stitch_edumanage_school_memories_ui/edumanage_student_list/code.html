@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EduManage - Student List</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&amp;family=Lexend:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-fixed-variant": "#594400",
+                      "tertiary-container": "#c9a74d",
+                      "on-primary-container": "#e0d2ff",
+                      "on-surface": "#1d1b20",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "surface-tint": "#6750a4",
+                      "primary-container": "#6750a4",
+                      "surface-container-high": "#ece6ee",
+                      "surface-bright": "#fdf7ff",
+                      "on-primary-fixed": "#22005d",
+                      "primary-fixed-dim": "#cfbcff",
+                      "on-primary-fixed-variant": "#4f378a",
+                      "inverse-on-surface": "#f5eff7",
+                      "on-tertiary-fixed": "#241a00",
+                      "surface-dim": "#ded8e0",
+                      "on-secondary-container": "#645a7d",
+                      "on-background": "#1d1b20",
+                      "surface": "#fdf7ff",
+                      "inverse-surface": "#322f35",
+                      "inverse-primary": "#cfbcff",
+                      "secondary-fixed": "#e9ddff",
+                      "on-surface-variant": "#494551",
+                      "secondary-fixed-dim": "#cdc0e9",
+                      "outline-variant": "#cbc4d2",
+                      "error": "#ba1a1a",
+                      "surface-variant": "#e6e0e9",
+                      "surface-container-highest": "#e6e0e9",
+                      "surface-container-low": "#f8f2fa",
+                      "tertiary-fixed-dim": "#e7c365",
+                      "primary-fixed": "#e9ddff",
+                      "on-tertiary-container": "#503d00",
+                      "on-primary": "#ffffff",
+                      "primary": "#4f378a",
+                      "tertiary": "#765b00",
+                      "on-error-container": "#93000a",
+                      "tertiary-fixed": "#ffdf93",
+                      "secondary-container": "#e1d4fd",
+                      "surface-container": "#f2ecf4",
+                      "on-secondary-fixed": "#1f1635",
+                      "error-container": "#ffdad6",
+                      "background": "#fdf7ff",
+                      "secondary": "#63597c",
+                      "on-error": "#ffffff",
+                      "outline": "#7a7582",
+                      "on-secondary-fixed-variant": "#4b4263",
+                      "on-tertiary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "card-gap": "24px",
+                      "unit": "8px",
+                      "container-padding": "32px"
+              },
+              "fontFamily": {
+                      "h3": ["Fredoka One"],
+                      "label-caps": ["Lexend"],
+                      "h2": ["Fredoka One"],
+                      "body-lg": ["Lexend"],
+                      "body-md": ["Lexend"],
+                      "body-sm": ["Lexend"],
+                      "h1": ["Fredoka One"]
+              },
+              "fontSize": {
+                      "h3": ["24px", {"lineHeight": "1.3", "fontWeight": "400"}],
+                      "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "h2": ["32px", {"lineHeight": "1.2", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "body-sm": ["14px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                      "h1": ["40px", {"lineHeight": "1.2", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .paper-texture {
+            background-image: repeating-linear-gradient(45deg, rgba(0,0,0,0.01) 0px, rgba(0,0,0,0.01) 2px, transparent 2px, transparent 4px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background paper-texture min-h-screen">
+<!-- Content Canvas (Shell Suppressed due to task-focused 'back' navigation intent) -->
+<main class="max-w-5xl mx-auto p-container-padding">
+<!-- Header Section -->
+<header class="flex flex-col md:flex-row md:items-center justify-between mb-gutter gap-4">
+<button class="flex items-center gap-2 text-primary font-h2 text-h2 hover:opacity-80 transition-opacity w-fit focus:outline-none">
+<span class="material-symbols-outlined" style="font-size: 32px; font-variation-settings: 'wght' 600;">arrow_left_alt</span>
+                Class 1A
+            </button>
+<button class="bg-tertiary-container text-on-tertiary-container font-label-caps text-label-caps px-6 py-3 rounded-lg border-2 border-on-tertiary-container shadow-[2px_2px_0px_0px_#503d00] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all flex items-center gap-2 w-fit">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 600;">add</span>
+                Add Student
+            </button>
+</header>
+<!-- Search Bar Section -->
+<div class="relative mb-card-gap w-full group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-tertiary transition-colors">search</span>
+<input class="w-full bg-surface-container-lowest border-2 border-outline-variant rounded-xl py-4 pl-12 pr-4 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-tertiary-fixed-dim focus:border-tertiary shadow-[2px_2px_0px_0px_#cbc4d2] transition-all placeholder:text-outline" placeholder="Search students by name..." type="text"/>
+</div>
+<!-- Student List Table (Notebook Paper Style) -->
+<div class="bg-surface-container-lowest border-2 border-outline-variant rounded-xl p-card-gap shadow-[4px_4px_0px_0px_#ded8e0]">
+<!-- Table Header -->
+<div class="grid grid-cols-12 gap-4 pb-4 border-b-2 border-dashed border-outline-variant text-on-surface-variant font-label-caps text-label-caps px-4">
+<div class="col-span-6 md:col-span-5">Student Name</div>
+<div class="col-span-3 hidden md:block">Attendance</div>
+<div class="col-span-4 md:col-span-3">Overall Marks</div>
+<div class="col-span-2 md:col-span-1 text-right">Action</div>
+</div>
+<!-- Student Rows -->
+<div class="flex flex-col gap-2 mt-4">
+<!-- Row 1 -->
+<div class="grid grid-cols-12 gap-4 items-center p-3 rounded-lg border-2 border-transparent hover:border-tertiary-fixed hover:bg-tertiary-fixed/20 cursor-pointer transition-all group" tabindex="0">
+<div class="col-span-6 md:col-span-5 flex items-center gap-4">
+<img class="w-12 h-12 rounded-full border-2 border-primary-fixed object-cover" data-alt="A brightly lit, cheerful portrait of a young elementary school boy smiling warmly. The photo has a soft, nostalgic light-mode aesthetic, reminiscent of a school picture day, featuring pastel background tones that align with the EduManage scrapbook style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQNdZpovjqBxpqCAMTTo-0bglMVDugnNE3jj9T9y5IhBDq7lBqBD5PpRSwdT-wCG0Y6urggzpd9EZ1C8dQl25YDpjjO87bbgK1MeCg9WRHB0ILHUOcacpndOIhBghsEeyjbsT2rft4YZz-7ShTx4qdDa6CTQ6vWELD8c7edg1OucZE9LxlRg6W8Dja9ulrkqDNh4MYaVvWihCSfsoaXZ40xfHfpJUV_3agnm6a-qBrC2V8DfEseT1PuMU3o0KAMdwKEId8hxGJ7YTs"/>
+<span class="font-body-lg text-body-lg text-on-surface font-semibold group-hover:text-primary transition-colors">Leo Barnes</span>
+</div>
+<div class="col-span-3 hidden md:flex items-center">
+<span class="inline-flex items-center gap-1 bg-primary-fixed text-on-primary-fixed font-label-caps text-label-caps px-3 py-1 rounded-sm border-x-2 border-dashed border-primary">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                            98%
+                        </span>
+</div>
+<div class="col-span-4 md:col-span-3 flex items-center">
+<span class="inline-block bg-secondary-fixed text-on-secondary-fixed font-label-caps text-label-caps px-3 py-1 rounded-sm border-x-2 border-dashed border-secondary">
+                            A- (92)
+                        </span>
+</div>
+<div class="col-span-2 md:col-span-1 flex justify-end items-center text-outline group-hover:text-tertiary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="grid grid-cols-12 gap-4 items-center p-3 rounded-lg border-2 border-transparent hover:border-tertiary-fixed hover:bg-tertiary-fixed/20 cursor-pointer transition-all group" tabindex="0">
+<div class="col-span-6 md:col-span-5 flex items-center gap-4">
+<img class="w-12 h-12 rounded-full border-2 border-primary-fixed object-cover" data-alt="A soft, beautifully lit portrait of a young girl with a gentle smile, shot against a neutral, airy background. The lighting is high-key and optimistic, fitting seamlessly into a clean, modern digital scrapbook UI. The colors are muted and warm." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnIXbbKaLZzD1NCQk0IpRqHvaG0smC37NWDH3omFFaFw8n4TbmMBR4PyqFxsJMZCHvRaH-ianaOHWPHcP56eLaq0b4S9MlWrduI39zXt84tW9FxFLKn8li6Qe5AV5N5ZloAc0Ae0zHrdDza6bPmVUy7eH8DMNPRLc6mbMFNeZ_WYbttqqafZqHPTV9BGJ_Xzzhl2kP9fg7GYTYp8C0DnHUlWM9uaOdCYius32eMdnjbEEcySG26AqZL0NivcpjUl8AGjVRrfLIs-Id"/>
+<span class="font-body-lg text-body-lg text-on-surface font-semibold group-hover:text-primary transition-colors">Mia Thermopolis</span>
+</div>
+<div class="col-span-3 hidden md:flex items-center">
+<span class="inline-flex items-center gap-1 bg-error-container text-on-error-container font-label-caps text-label-caps px-3 py-1 rounded-sm border-x-2 border-dashed border-error">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+                            82%
+                        </span>
+</div>
+<div class="col-span-4 md:col-span-3 flex items-center">
+<span class="inline-block bg-surface-container-high text-on-surface font-label-caps text-label-caps px-3 py-1 rounded-sm border-x-2 border-dashed border-outline">
+                            B+ (88)
+                        </span>
+</div>
+<div class="col-span-2 md:col-span-1 flex justify-end items-center text-outline group-hover:text-tertiary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="grid grid-cols-12 gap-4 items-center p-3 rounded-lg border-2 border-transparent hover:border-tertiary-fixed hover:bg-tertiary-fixed/20 cursor-pointer transition-all group" tabindex="0">
+<div class="col-span-6 md:col-span-5 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full border-2 border-secondary bg-secondary-container flex items-center justify-center text-on-secondary-container font-h3 text-h3">
+                            S
+                        </div>
+<span class="font-body-lg text-body-lg text-on-surface font-semibold group-hover:text-primary transition-colors">Samwise Gamgee</span>
+</div>
+<div class="col-span-3 hidden md:flex items-center">
+<span class="inline-flex items-center gap-1 bg-primary-fixed text-on-primary-fixed font-label-caps text-label-caps px-3 py-1 rounded-sm border-x-2 border-dashed border-primary">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                            100%
+                        </span>
+</div>
+<div class="col-span-4 md:col-span-3 flex items-center">
+<span class="inline-block bg-secondary-fixed text-on-secondary-fixed font-label-caps text-label-caps px-3 py-1 rounded-sm border-x-2 border-dashed border-secondary">
+                            A+ (99)
+                        </span>
+</div>
+<div class="col-span-2 md:col-span-1 flex justify-end items-center text-outline group-hover:text-tertiary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+<!-- Row 4 -->
+<div class="grid grid-cols-12 gap-4 items-center p-3 rounded-lg border-2 border-transparent hover:border-tertiary-fixed hover:bg-tertiary-fixed/20 cursor-pointer transition-all group" tabindex="0">
+<div class="col-span-6 md:col-span-5 flex items-center gap-4">
+<img class="w-12 h-12 rounded-full border-2 border-primary-fixed object-cover" data-alt="A candid, bright photo of a teenage boy wearing glasses, looking thoughtful. The setting is bright and sunny, evoking a positive school environment. The aesthetic is clean and crisp, perfect for a modern educational platform's user avatar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZLs8XRlognfwmdFtu_ATYmQ_6BsGOl2mtEgsl5g7ZPwERKbmBtsBJ3sbdDoRcRD3ZLwWeKSnA4n5RGNy4Nk6L2bztzsy0MVTcvSWFUtjmZMEudDZJqNdJe_gOEbQ7H2JUR-GyI92vtVHJKEAatbQlFm7P-rHzQiqOG00UzD5c4pXLfgf_WrG_9KAmwZQPY7dFOSlE7JFhmP81X_e1r6BsngRwJVf5zuejs6QtDShJxr9ryMGPWjp33ASZUB56kDfG1hvpx8k-MI4M"/>
+<span class="font-body-lg text-body-lg text-on-surface font-semibold group-hover:text-primary transition-colors">Arthur Dent</span>
+</div>
+<div class="col-span-3 hidden md:flex items-center">
+<span class="inline-flex items-center gap-1 bg-primary-fixed text-on-primary-fixed font-label-caps text-label-caps px-3 py-1 rounded-sm border-x-2 border-dashed border-primary">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                            95%
+                        </span>
+</div>
+<div class="col-span-4 md:col-span-3 flex items-center">
+<span class="inline-block bg-surface-container-high text-on-surface font-label-caps text-label-caps px-3 py-1 rounded-sm border-x-2 border-dashed border-outline">
+                            C (74)
+                        </span>
+</div>
+<div class="col-span-2 md:col-span-1 flex justify-end items-center text-outline group-hover:text-tertiary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Playful Doodle Easter Egg (End of list) -->
+<div class="mt-8 flex justify-center opacity-20 pointer-events-none">
+<svg class="text-on-surface" fill="none" height="48" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="48">
+<path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
+</svg>
+</div>
+</div>
+</main>
+</body></html>

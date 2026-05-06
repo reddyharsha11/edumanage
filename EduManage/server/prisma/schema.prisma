@@ -1,0 +1,174 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Institution {
+  id         Int       @id @default(autoincrement())
+  name       String
+  address    String?
+  createdAt  DateTime  @default(now())
+  users      User[]
+  classes    Class[]
+  busRoutes  BusRoute[]
+}
+
+model User {
+  id             Int             @id @default(autoincrement())
+  institutionId  Int?
+  institution    Institution?    @relation(fields: [institutionId], references: [id])
+  name           String
+  email          String          @unique
+  passwordHash   String
+  role           String          // 'admin', 'operator', 'bus_driver', 'partial'
+  isApproved     Boolean         @default(false)
+  createdAt      DateTime        @default(now())
+
+  attendance       Attendance[]
+  busRoutes        BusRoute[]
+  sentMessages     Message[]
+  grantsGiven      AccessGrant[]   @relation("OperatorGrants")
+  grantsReceived   AccessGrant[]   @relation("GranteeGrants")
+  driverLocations  DriverLocation[]
+  driverSessions   DriverSession[]
+  auditLogs        AuditLog[]
+}
+
+model AccessGrant {
+  id          Int      @id @default(autoincrement())
+  operatorId  Int?
+  operator    User?    @relation("OperatorGrants", fields: [operatorId], references: [id])
+  granteeId   Int?
+  grantee     User?    @relation("GranteeGrants", fields: [granteeId], references: [id])
+  permissions String
+  createdAt   DateTime @default(now())
+}
+
+model Class {
+  id            Int          @id @default(autoincrement())
+  institutionId Int?
+  institution   Institution? @relation(fields: [institutionId], references: [id])
+  name          String
+  section       String?
+  createdAt     DateTime     @default(now())
+  students      Student[]
+}
+
+model Student {
+  id             Int        @id @default(autoincrement())
+  classId        Int?
+  class          Class?     @relation(fields: [classId], references: [id], onDelete: Cascade)
+  name           String
+  dob            DateTime?
+  parentName     String?
+  parentPhone    String?
+  parentLanguage String     @default("English")
+  createdAt      DateTime   @default(now())
+
+  attendance Attendance[]
+  marks      Mark[]
+  busRoutes  BusRouteStudent[]
+  remarks    StudentRemark[]
+}
+
+model Attendance {
+  id         Int      @id @default(autoincrement())
+  studentId  Int?
+  student    Student? @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  date       DateTime
+  status     String
+  type       String
+  markedById Int?
+  markedBy   User?    @relation(fields: [markedById], references: [id])
+  createdAt  DateTime @default(now())
+}
+
+model Mark {
+  id            Int      @id @default(autoincrement())
+  studentId     Int?
+  student       Student? @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  term          String
+  subject       String
+  marksObtained Float
+  totalMarks    Float
+  createdAt     DateTime @default(now())
+}
+
+model BusRoute {
+  id            Int      @id @default(autoincrement())
+  institutionId Int?
+  institution   Institution? @relation(fields: [institutionId], references: [id])
+  routeName     String
+  driverId      Int?
+  driver        User?    @relation(fields: [driverId], references: [id])
+
+  students         BusRouteStudent[]
+  driverLocations  DriverLocation[]
+  driverSessions   DriverSession[]
+}
+
+model BusRouteStudent {
+  id        Int       @id @default(autoincrement())
+  routeId   Int?
+  route     BusRoute? @relation(fields: [routeId], references: [id], onDelete: Cascade)
+  studentId Int?
+  student   Student?  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+}
+
+model Message {
+  id             Int      @id @default(autoincrement())
+  senderId       Int?
+  sender         User?    @relation(fields: [senderId], references: [id])
+  recipientPhone String?
+  content        String?
+  language       String?
+  sentAt         DateTime @default(now())
+  channel        String   @default("whatsapp")
+}
+
+model StudentRemark {
+  id        Int      @id @default(autoincrement())
+  studentId Int?
+  student   Student? @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  remark    String?
+  updatedAt DateTime @default(now()) @updatedAt
+}
+
+model DriverLocation {
+  id         Int      @id @default(autoincrement())
+  driverId   Int?
+  driver     User?    @relation(fields: [driverId], references: [id], onDelete: Cascade)
+  routeId    Int?
+  route      BusRoute? @relation(fields: [routeId], references: [id], onDelete: Cascade)
+  latitude   Float
+  longitude  Float
+  accuracy   Float?
+  isActive   Boolean  @default(true)
+  recordedAt DateTime @default(now())
+}
+
+model DriverSession {
+  id        Int      @id @default(autoincrement())
+  driverId  Int?
+  driver    User?    @relation(fields: [driverId], references: [id], onDelete: Cascade)
+  routeId   Int?
+  route     BusRoute? @relation(fields: [routeId], references: [id], onDelete: Cascade)
+  startedAt DateTime @default(now())
+  endedAt   DateTime?
+  isActive  Boolean  @default(true)
+}
+
+model AuditLog {
+  id          Int      @id @default(autoincrement())
+  userId      Int?
+  user        User?    @relation(fields: [userId], references: [id])
+  action      String
+  targetTable String?
+  targetId    Int?
+  details     String?  // JSON string (SQLite has no JSON type)
+  performedAt DateTime @default(now())
+}

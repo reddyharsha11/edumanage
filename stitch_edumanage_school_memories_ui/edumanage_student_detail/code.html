@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EduManage Student Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&amp;family=Lexend:wght@400;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#594400",
+                        "tertiary-container": "#c9a74d",
+                        "on-primary-container": "#e0d2ff",
+                        "on-surface": "#1d1b20",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#6750a4",
+                        "primary-container": "#6750a4",
+                        "surface-container-high": "#ece6ee",
+                        "surface-bright": "#fdf7ff",
+                        "on-primary-fixed": "#22005d",
+                        "primary-fixed-dim": "#cfbcff",
+                        "on-primary-fixed-variant": "#4f378a",
+                        "inverse-on-surface": "#f5eff7",
+                        "on-tertiary-fixed": "#241a00",
+                        "surface-dim": "#ded8e0",
+                        "on-secondary-container": "#645a7d",
+                        "on-background": "#1d1b20",
+                        "surface": "#fdf7ff",
+                        "inverse-surface": "#322f35",
+                        "inverse-primary": "#cfbcff",
+                        "secondary-fixed": "#e9ddff",
+                        "on-surface-variant": "#494551",
+                        "secondary-fixed-dim": "#cdc0e9",
+                        "outline-variant": "#cbc4d2",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#e6e0e9",
+                        "surface-container-highest": "#e6e0e9",
+                        "surface-container-low": "#f8f2fa",
+                        "tertiary-fixed-dim": "#e7c365",
+                        "primary-fixed": "#e9ddff",
+                        "on-tertiary-container": "#503d00",
+                        "on-primary": "#ffffff",
+                        "primary": "#4f378a",
+                        "tertiary": "#765b00",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#ffdf93",
+                        "secondary-container": "#e1d4fd",
+                        "surface-container": "#f2ecf4",
+                        "on-secondary-fixed": "#1f1635",
+                        "error-container": "#ffdad6",
+                        "background": "#fdf7ff",
+                        "secondary": "#63597c",
+                        "on-error": "#ffffff",
+                        "outline": "#7a7582",
+                        "on-secondary-fixed-variant": "#4b4263",
+                        "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "card-gap": "24px",
+                        "unit": "8px",
+                        "container-padding": "32px"
+                    },
+                    "fontFamily": {
+                        "h3": ["Fredoka One"],
+                        "label-caps": ["Lexend"],
+                        "h2": ["Fredoka One"],
+                        "body-lg": ["Lexend"],
+                        "body-md": ["Lexend"],
+                        "body-sm": ["Lexend"],
+                        "h1": ["Fredoka One"]
+                    },
+                    "fontSize": {
+                        "h3": ["24px", { "lineHeight": "1.3", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "h2": ["32px", { "lineHeight": "1.2", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "h1": ["40px", { "lineHeight": "1.2", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .paper-texture {
+            background-color: #fff9f0;
+            background-image: linear-gradient(45deg, rgba(0,0,0,0.02) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.02) 75%, rgba(0,0,0,0.02)), linear-gradient(45deg, rgba(0,0,0,0.02) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.02) 75%, rgba(0,0,0,0.02));
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+        }
+        .crayon-shadow {
+            box-shadow: 2px 2px 0px 0px rgba(99, 89, 124, 0.8);
+        }
+        .crayon-shadow-lg {
+            box-shadow: 4px 4px 0px 0px rgba(99, 89, 124, 0.8);
+        }
+        .notebook-lines {
+            background-image: linear-gradient(transparent 95%, #cbd5e1 5%);
+            background-size: 100% 2em;
+            line-height: 2em;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- Top Navigation (Contextual departure, hiding global nav per rules) -->
+<header class="w-full h-20 sticky top-0 z-40 bg-[#fdf6e3] shadow-[0_4px_0_0_rgba(0,0,0,0.05)] border-b-2 border-stone-200 flex items-center px-8">
+<a class="flex items-center text-secondary hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined mr-2">arrow_back</span>
+<span class="font-body-lg text-body-lg">Class 1A</span>
+</a>
+</header>
+<main class="container mx-auto px-container-padding py-8 max-w-7xl">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+<div class="flex items-center gap-4">
+<img alt="Student Portrait" class="w-20 h-20 rounded-full border-4 border-surface-container-lowest crayon-shadow object-cover" data-alt="A brightly lit, cheerful portrait photo of a smiling young primary school student, full of energy and ready to learn. The background is slightly blurred but suggests a colorful classroom environment. The overall aesthetic is friendly, optimistic, and bathed in soft, warm daylight typical of a sunny school morning." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDasIXGkjDWSZLOfYLQBd3vQU5lFEHjaMZRTiUQFTGT-L0IAGKZnhYsgkyBGb6o50MueILJnL1sUi8SQ4aBiB3VJtTxZbMbi-0XFVBs6phB4ubJgN7JKsxxkR3ZUQi7Zo_BS8NIhhillBbO4zYFi3Aaurrwd3PEAx2iv0yc_wF1gqrDL5vZ92oMT02VMYOYb2ItPf5z8AgzS3UfhVLnVxCZtenqAFttZ8fVtmpERcTdpzkk5JndsCG2gbyKDgdXRUeLiLEvC0MiPMBF"/>
+<div>
+<h1 class="font-h1 text-h1 text-on-background">Oliver Twist</h1>
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-secondary text-on-secondary font-label-caps text-label-caps mt-2">
+<span class="material-symbols-outlined text-[14px] mr-1">school</span>
+                        Class 1A
+                    </span>
+</div>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-body-md text-body-md crayon-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all flex items-center gap-2">
+<span class="material-symbols-outlined">edit</span>
+                Edit Profile
+            </button>
+</div>
+<!-- Performance Summary -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-8">
+<div class="md:col-span-3 bg-surface-container-lowest rounded-xl p-6 crayon-shadow-lg border-2 border-outline-variant flex flex-col md:flex-row gap-6 md:gap-0 divide-y-2 md:divide-y-0 md:divide-x-2 divide-dashed divide-outline-variant paper-texture">
+<div class="flex-1 flex flex-col items-center justify-center py-2 md:py-0">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider mb-2">Attendance</span>
+<div class="flex items-end gap-2">
+<span class="font-h2 text-h2 text-primary">88%</span>
+<span class="material-symbols-outlined text-secondary mb-1">calendar_today</span>
+</div>
+</div>
+<div class="flex-1 flex flex-col items-center justify-center py-4 md:py-0">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider mb-2">Current Term</span>
+<div class="flex items-end gap-2">
+<span class="font-h2 text-h2 text-tertiary">74%</span>
+<span class="material-symbols-outlined text-secondary mb-1">analytics</span>
+</div>
+</div>
+<div class="flex-1 flex flex-col items-center justify-center py-4 md:py-0">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider mb-2">Previous Term</span>
+<div class="flex items-end gap-2">
+<span class="font-h2 text-h2 text-secondary">68%</span>
+<span class="material-symbols-outlined text-secondary mb-1">history</span>
+</div>
+</div>
+</div>
+<div class="md:col-span-1 bg-surface-container-low rounded-xl p-6 border-l-4 border-primary flex flex-col justify-center items-start crayon-shadow">
+<div class="flex items-center gap-2 mb-2 text-primary">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="font-label-caps text-label-caps uppercase">Improved</span>
+</div>
+<span class="font-h3 text-h3 text-on-background">+6.2% Growth</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">Steady progress in core subjects.</p>
+</div>
+</div>
+<!-- 2-Column Main Content -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+<!-- Left Column: Teacher Remarks -->
+<div class="bg-surface-container-lowest rounded-xl p-6 crayon-shadow-lg border-2 border-outline-variant relative">
+<span class="material-symbols-outlined absolute top-4 right-4 text-outline opacity-20 text-[40px] rotate-12">stylus_note</span>
+<h2 class="font-h3 text-h3 text-on-background mb-4 flex items-center gap-2 border-b-2 border-surface-variant pb-2">
+<span class="text-2xl">✏️</span> Teacher Remarks
+                </h2>
+<textarea class="w-full h-64 p-4 border-2 border-outline-variant rounded-lg font-body-md text-body-md text-on-background focus:ring-2 focus:ring-tertiary focus:border-tertiary notebook-lines bg-transparent resize-none" placeholder="Write your observation notes here..."></textarea>
+<div class="mt-4 flex justify-end">
+<button class="bg-secondary text-on-secondary px-6 py-2 rounded-lg font-body-md text-body-md crayon-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all">
+                        Save Notes
+                    </button>
+</div>
+</div>
+<!-- Right Column: Parent Details & Contact -->
+<div class="flex flex-col gap-gutter">
+<!-- Parent Details Form -->
+<div class="bg-surface-container-lowest rounded-xl p-6 crayon-shadow-lg border-2 border-outline-variant relative">
+<span class="material-symbols-outlined absolute top-4 right-4 text-outline opacity-20 text-[40px] -rotate-12">family_restroom</span>
+<h2 class="font-h3 text-h3 text-on-background mb-4 flex items-center gap-2 border-b-2 border-surface-variant pb-2">
+<span class="text-2xl">👨‍👩‍👧</span> Parent Details
+                    </h2>
+<form class="space-y-4">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-1 ml-1">Guardian Name</label>
+<input class="w-full px-4 py-2 bg-surface-container-low border-2 border-outline-variant rounded-xl font-body-md text-body-md focus:ring-2 focus:ring-tertiary focus:border-tertiary" type="text" value="Mr. Brownlow"/>
+</div>
+<div>
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-1 ml-1">Relationship</label>
+<input class="w-full px-4 py-2 bg-surface-container-low border-2 border-outline-variant rounded-xl font-body-md text-body-md focus:ring-2 focus:ring-tertiary focus:border-tertiary" type="text" value="Adoptive Father"/>
+</div>
+</div>
+<div>
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-1 ml-1">Primary Email</label>
+<input class="w-full px-4 py-2 bg-surface-container-low border-2 border-outline-variant rounded-xl font-body-md text-body-md focus:ring-2 focus:ring-tertiary focus:border-tertiary" type="email" value="brownlow@example.com"/>
+</div>
+<div>
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-1 ml-1">Phone Number</label>
+<input class="w-full px-4 py-2 bg-surface-container-low border-2 border-outline-variant rounded-xl font-body-md text-body-md focus:ring-2 focus:ring-tertiary focus:border-tertiary" type="tel" value="+44 123 456 7890"/>
+</div>
+<div class="pt-2">
+<button class="w-full bg-primary text-on-primary px-6 py-3 rounded-lg font-body-md text-body-md font-bold crayon-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all" type="button">
+                                Save Changes
+                            </button>
+</div>
+</form>
+</div>
+<!-- WhatsApp Card -->
+<div class="bg-surface-container-low rounded-xl p-6 border-2 border-outline-variant flex flex-col sm:flex-row items-center justify-between gap-4 crayon-shadow">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-variant flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[28px]">chat</span>
+</div>
+<div>
+<h3 class="font-h3 text-h3 text-on-background text-[20px]">Quick Contact</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Send a direct message via WhatsApp</p>
+</div>
+</div>
+<button class="bg-[#25D366] text-white px-6 py-2 rounded-lg font-body-md text-body-md crayon-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all flex items-center gap-2 w-full sm:w-auto justify-center">
+<span class="material-symbols-outlined">send</span>
+                        Message
+                    </button>
+</div>
+</div>
+</div>
+</main>
+</body></html>
