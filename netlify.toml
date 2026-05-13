@@ -1,0 +1,2 @@
+[build.environment]
+  VITE_API_BASE_URL = "https://edumanage-sd59.onrender.com/api"
